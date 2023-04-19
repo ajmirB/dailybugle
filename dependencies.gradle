@@ -27,7 +27,7 @@ ext {
 			"okhttp"   : "4.10.0",
 	]
 	thirdpart = [
-	        "coil"     : "2.2.2",
+			"coil"     : "2.2.2",
 	]
 	test = [
 			"junit5"            : "5.9.2",

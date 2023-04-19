@@ -47,6 +47,11 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':data:common')
+    implementation project(path: ':data:networking:retrofit')
+    implementation project(path: ':data:news:news')
+    implementation project(path: ':data:news:news-impl')
+
     // Android
     implementation "androidx.core:core-ktx:${androidx.ktx}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:${androidx.lifecycle}"

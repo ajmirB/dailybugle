@@ -11,12 +11,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/data" />
-            <option value="$PROJECT_DIR$/data/account" />
-            <option value="$PROJECT_DIR$/data/account/news" />
-            <option value="$PROJECT_DIR$/data/account/news-impl" />
             <option value="$PROJECT_DIR$/data/common" />
             <option value="$PROJECT_DIR$/data/networking" />
             <option value="$PROJECT_DIR$/data/networking/retrofit" />
+            <option value="$PROJECT_DIR$/data/news" />
+            <option value="$PROJECT_DIR$/data/news/news" />
+            <option value="$PROJECT_DIR$/data/news/news-impl" />
             <option value="$PROJECT_DIR$/ui" />
           </set>
         </option>
