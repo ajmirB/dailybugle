@@ -19,3 +19,6 @@ include ':data:common'
 include ':data:networking:retrofit'
 include ':data:news:news'
 include ':data:news:news-impl'
+
+include ':ui:common'
+include ':ui:home'

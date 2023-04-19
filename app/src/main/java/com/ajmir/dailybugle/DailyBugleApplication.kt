@@ -4,6 +4,7 @@ import android.app.Application
 import com.ajmir.common.commonModule
 import com.ajmir.news.newsModule
 import com.ajmir.retrofit.networkingModule
+import com.ajmir.ui.home.homeUiModule
 import org.koin.core.context.GlobalContext
 
 class DailyBugleApplication: Application() {
@@ -15,7 +16,8 @@ class DailyBugleApplication: Application() {
             modules(
                 commonModule,
                 networkingModule,
-                newsModule
+                newsModule,
+                homeUiModule
             )
         }
     }

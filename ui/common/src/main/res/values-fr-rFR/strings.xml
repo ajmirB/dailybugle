@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daily Bugle</string>
+
+    <string name="error_retry">Réessayer</string>
+
+    <string name="home_error_no_data_title">Oups!</string>
+    <string name="home_error_no_data_message">Une erreur s\'est produite, nous n\'avons pas pu récupérer vos données</string>
+</resources>

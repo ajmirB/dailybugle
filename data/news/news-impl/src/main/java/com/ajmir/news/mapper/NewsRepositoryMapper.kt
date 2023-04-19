@@ -1,5 +1,6 @@
 package com.ajmir.news.mapper
 
+import android.util.Log
 import com.ajmir.common.manager.DateManager
 import com.ajmir.news.model.NewsEntity
 import com.ajmir.news.remote.model.ArticleResponse
@@ -20,5 +21,5 @@ class NewsRepositoryMapper(
         publishedAt = dateManager.parse(article.publishedAt)!!,
         author = article.author,
         source = article.source.name
-    )
+    ).also { Log.e("test", "mapToEntity: ${article.urlToImage}", ) }
 }

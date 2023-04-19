@@ -49,8 +49,10 @@ android {
 dependencies {
     implementation project(path: ':data:common')
     implementation project(path: ':data:networking:retrofit')
-    implementation project(path: ':data:news:news')
     implementation project(path: ':data:news:news-impl')
+
+    implementation project(path: ':ui:common')
+    implementation project(path: ':ui:home')
 
     // Android
     implementation "androidx.core:core-ktx:${androidx.ktx}"
