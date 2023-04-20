@@ -10,6 +10,7 @@ class NewsRepositoryMapper(
 ) {
 
     fun mapToEntity(article: ArticleResponse) = ArticleEntity(
+        // The id is not provided by the api, we need it to link the news feeds to the article detail
         id = UUID.randomUUID().toString(),
         title = article.title,
         description = article.description,

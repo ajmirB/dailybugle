@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 val networkingModule = module {
     factoryOf(::Gson)
-    factoryOf(::ApiKeyInterceptor)
+    factory { ApiKeyInterceptor(BuildConfig.API_KEY) }
     factoryOf(::ApiErrorInterceptor)
     factoryOf(::ApiErrorMapper)
     factoryOf(RetrofitProvider::provideOkhttp)

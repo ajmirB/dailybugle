@@ -32,6 +32,7 @@ internal class NewsRepositoryImplTest {
         repository = NewsRepositoryImpl(api, mapper)
 
         coEvery { mapper.mapToEntity(any()) } returns ArticleEntity(
+            id = "sdfdscdsc",
             title = "Morgan Stanley tops analysts’ expectations on better-than-expected trading results - CNBC",
             description = "Morgan Stanley gets most of its revenue from wealth and investment management, steadier businesses that helped offset volatile trading and advisory results.",
             url = "",
@@ -74,7 +75,7 @@ internal class NewsRepositoryImplTest {
         coEvery { api.getTopHeadlines(any()) } returns newsResponse
 
         // When
-        val result = runBlocking { repository.getNews() }
+        val result = runBlocking { repository.getNews("fr") }
 
         // Then
         result.isSuccess shouldBe true
@@ -87,7 +88,7 @@ internal class NewsRepositoryImplTest {
         coEvery { api.getTopHeadlines(any()) } throws ApiError.GenericError("","")
 
         // When
-        val result = runBlocking { repository.getNews() }
+        val result = runBlocking { repository.getNews("fr") }
 
         // Then
         result.isFailure shouldBe true
@@ -127,7 +128,7 @@ internal class NewsRepositoryImplTest {
         coEvery { mapper.mapToEntity(any()) } throws error
 
         // When
-        val result = runBlocking { repository.getNews() }
+        val result = runBlocking { repository.getNews("fr") }
 
         // Then
         result.isFailure shouldBe true
