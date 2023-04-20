@@ -22,3 +22,5 @@ include ':data:news:news-impl'
 
 include ':ui:common'
 include ':ui:home'
+include ':ui:article'
+

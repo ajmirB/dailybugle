@@ -53,6 +53,7 @@ dependencies {
 
     implementation project(path: ':ui:common')
     implementation project(path: ':ui:home')
+    implementation project(path: ':ui:article')
 
     // Android
     implementation "androidx.core:core-ktx:${androidx.ktx}"

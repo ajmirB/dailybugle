@@ -1,8 +1,5 @@
 package com.ajmir.ui.home.viewmodel
 
-import android.util.Log
-import android.view.View
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ajmir.news.NewsRepository
@@ -11,6 +8,7 @@ import com.ajmir.ui.home.model.HomeViewState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.util.*
 
 class HomeViewModel(
     private val newsRepository: NewsRepository,
@@ -27,6 +25,7 @@ class HomeViewModel(
     // region User Interaction
 
     fun onRetryClicked() {
+        viewState.update { HomeViewState.Loading }
         loadData()
     }
 
@@ -34,9 +33,11 @@ class HomeViewModel(
 
     private fun loadData() {
         viewModelScope.launch {
-            newsRepository.getNews()
+            newsRepository.getNews(country = Locale.getDefault().country)
                 .onSuccess { state ->
-                    viewState.update { homeMapper.mapToViewState(state) }
+                    viewState.update {
+                        homeMapper.mapToViewState(state)
+                    }
                 }
                 .onFailure {
                     viewState.update { current ->

@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/data/news/news" />
             <option value="$PROJECT_DIR$/data/news/news-impl" />
             <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/ui/article" />
             <option value="$PROJECT_DIR$/ui/common" />
             <option value="$PROJECT_DIR$/ui/home" />
           </set>

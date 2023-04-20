@@ -6,4 +6,6 @@
 
     <string name="home_error_no_data_title">Oups!</string>
     <string name="home_error_no_data_message">Une erreur s\'est produite, nous n\'avons pas pu récupérer vos données</string>
+
+    <string name="article_open_button">Ouvrir</string>
 </resources>

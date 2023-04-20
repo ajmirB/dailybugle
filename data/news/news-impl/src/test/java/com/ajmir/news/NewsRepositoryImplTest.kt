@@ -1,7 +1,7 @@
 package com.ajmir.news
 
 import com.ajmir.news.mapper.NewsRepositoryMapper
-import com.ajmir.news.model.NewsEntity
+import com.ajmir.news.model.ArticleEntity
 import com.ajmir.news.remote.NewsApi
 import com.ajmir.news.remote.model.*
 import com.ajmir.retrofit.model.ApiError
@@ -31,7 +31,7 @@ internal class NewsRepositoryImplTest {
     internal fun setUp() {
         repository = NewsRepositoryImpl(api, mapper)
 
-        coEvery { mapper.mapToEntity(any()) } returns NewsEntity(
+        coEvery { mapper.mapToEntity(any()) } returns ArticleEntity(
             title = "Morgan Stanley tops analysts’ expectations on better-than-expected trading results - CNBC",
             description = "Morgan Stanley gets most of its revenue from wealth and investment management, steadier businesses that helped offset volatile trading and advisory results.",
             url = "",
@@ -78,7 +78,7 @@ internal class NewsRepositoryImplTest {
 
         // Then
         result.isSuccess shouldBe true
-        assert(result.getOrNull() is List<NewsEntity>)
+        assert(result.getOrNull() is List<ArticleEntity>)
     }
 
     @Test

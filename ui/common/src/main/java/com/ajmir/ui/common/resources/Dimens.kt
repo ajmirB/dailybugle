@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.sp
 object Dimens {
     val radius = 10.dp
     val border = 1.dp
+    val imageThumbnail = 100.dp
 
     object Spacing {
         val verySmall = 7.dp

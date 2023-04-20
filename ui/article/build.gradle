@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.ajmir.ui.home'
+    namespace 'com.ajmir.ui.article'
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {

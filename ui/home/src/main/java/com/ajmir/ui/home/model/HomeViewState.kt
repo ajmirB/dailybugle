@@ -13,8 +13,9 @@ sealed interface HomeViewState {
 }
 
 data class NewsViewState(
+    val id: String,
     val title: String,
     val imageUrl: String?,
-    val author: String,
+    val author: String?,
     val source: String
 )

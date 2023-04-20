@@ -1,69 +1,74 @@
 package com.ajmir.ui.home.view
 
-import android.util.Log
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
-import com.ajmir.ui.common.resources.Colors
+import coil.compose.AsyncImagePainter
+import coil.compose.SubcomposeAsyncImage
+import coil.compose.SubcomposeAsyncImageContent
 import com.ajmir.ui.common.resources.Dimens
-import com.ajmir.ui.common.resources.RoundedShape
+import com.ajmir.ui.common.view.OwnerTagsView
 import com.ajmir.ui.home.model.HomeViewState
 
 @Composable
 fun HomeDataView(
-    data: HomeViewState.Data
+    viewState: HomeViewState.Data,
+    onArticleClicked: (String) -> Unit
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(top = 35.dp)
+        contentPadding = PaddingValues(top = 55.dp)
     ) {
-        data.news.forEach {
+        viewState.news.forEach { article ->
             item {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(Dimens.Spacing.medium),
-                    modifier = Modifier.padding(Dimens.Spacing.high)
+                    verticalArrangement = Arrangement.spacedBy(Dimens.Spacing.small),
+                    modifier = Modifier
+                        .clickable { onArticleClicked(article.id) }
+                        .padding(horizontal = Dimens.Spacing.small)
+                        .padding(bottom = Dimens.Spacing.high + Dimens.Spacing.verySmall)
                 ) {
+                    // Header: Owner
+                    OwnerTagsView(
+                        source = article.source,
+                        author = article.author
+                    )
+                    // Content
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        horizontalArrangement = Arrangement.spacedBy(Dimens.Spacing.small)
                     ) {
-                        Tag(text = it.author.uppercase(), backgroundColor = Colors.primary)
-                        Tag(text = it.source.uppercase(), backgroundColor = Colors.secondary)
-                    }
-                    Row {
-                        it.imageUrl?.let { imageUrl ->
-                            AsyncImage(
-                                model = imageUrl,
-                                contentDescription = null,
-                                modifier = Modifier.size(48.dp)
-                            )
+                        // Image
+                        SubcomposeAsyncImage(
+                            model = article.imageUrl,
+                            contentDescription = null,
+                            colorFilter = ColorFilter.tint(Color.Black, BlendMode.Saturation),
+                            contentScale = ContentScale.Crop,
+                        ) {
+                            when (painter.state) {
+                                AsyncImagePainter.State.Empty,
+                                is AsyncImagePainter.State.Error -> { /* Nothing */}
+                                is AsyncImagePainter.State.Loading ->
+                                    Spacer(
+                                        modifier = Modifier.size(Dimens.imageThumbnail)
+                                    )
+                                is AsyncImagePainter.State.Success ->
+                                    SubcomposeAsyncImageContent(
+                                        modifier = Modifier.size(Dimens.imageThumbnail)
+                                    )
+                            }
                         }
-                        Text(it.title)
+                        // Text
+                        Text(article.title)
                     }
                 }
             }
         }
     }
-}
-
-@Composable
-private fun Tag(
-    text: String,
-    textColor: Color = Colors.tag,
-    backgroundColor: Color = Color.Black
-) {
-    Text(
-        text = text.uppercase(),
-        fontSize = 10.sp,
-        color = textColor,
-        modifier = Modifier
-            .background(backgroundColor, RoundedShape)
-            .padding(5.dp)
-    )
 }

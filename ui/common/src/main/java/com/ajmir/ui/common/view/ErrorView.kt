@@ -1,4 +1,4 @@
-package com.ajmir.ui.home.view
+package com.ajmir.ui.common.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,7 +20,7 @@ import com.ajmir.ui.common.resources.Colors
 import com.ajmir.ui.common.resources.Dimens
 
 @Composable
-fun HomeErrorView(
+fun ErrorView(
     onRetry: () -> Unit
 ) {
     Box(modifier = Modifier

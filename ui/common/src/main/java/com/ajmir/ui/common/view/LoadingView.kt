@@ -1,4 +1,4 @@
-package com.ajmir.ui.home.view
+package com.ajmir.ui.common.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun HomeLoadingView() {
+fun LoadingView() {
     Box(Modifier.fillMaxSize()) {
         CircularProgressIndicator(
             color = Color.Black,
